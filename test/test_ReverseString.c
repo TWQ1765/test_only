@@ -15,8 +15,22 @@ void test_something_NeedToImplement(void)
     TEST_IGNORE_MESSAGE("Need to Implement something");
 }
 
+void test_selfTryLinkedList_just_test_LOL(void)
+{
+   //int zero = selfTryLinkedList();
+}
 
+//*//TRY linked list single
 
+void test_tryLinkedList1_just_test_LOL(void)
+{
+    int zero = tryLinkedList1();
+}
+void test_tryLinkedList2_just_test_LOL(void)
+{
+    int zero = tryLinkedList2();
+}
+//*/
 
 /*//try struct
 void test_testStruct_just_test(void)

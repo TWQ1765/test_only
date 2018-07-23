@@ -1,6 +1,37 @@
 #ifndef _REVERSESTRING_H
 #define _REVERSESTRING_H
-/*
+
+
+typedef struct listItem listItem;
+struct listItem{
+		listItem * next;
+		void * data;
+};
+typedef struct linkedList linkedList;
+struct linkedList{
+		linkedList * head;
+		linkedList * tail;
+		int count;
+};
+int selfTryLinkedList();
+
+//linked list single
+//*
+typedef struct node node;
+struct node {
+   int data;
+   struct node *next;
+};
+void printList();
+void insert1(int data);
+int tryLinkedList1();
+
+void reverse_print(struct node *list);
+void insert2(int data);
+int tryLinkedList2();
+//*/
+
+/*//struct
 typedef struct Books Books;
 struct Books{
 	char  title[50];
