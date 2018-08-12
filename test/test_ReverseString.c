@@ -16,28 +16,28 @@ void test_something_NeedToImplement(void)
 void test_stringCompare_given_amoeba_expect_return_TRUE(void){
 	char* dataName = "amoeba";
 	char *name1 = "amoeba";
-	int result = 2;
+	StrCompare* result;
 	result = stringCompare(dataName, name1);
-	TEST_ASSERT_TRUE(result);
+	TEST_ASSERT_TRUE(result->trueFalse);
 }
-void test_stringCompare_given_string_diffrent_length_expect_return_FALSE(void){
+void test_stringCompare_given_string_diffrent_length_expect_return_TRUE(void){
 	char* dataName = "amoeba  ";
 	char *name1 = "amoeba";
-	int result = 2;
+	StrCompare* result;
 	result = stringCompare(dataName, name1);
-	TEST_ASSERT_FALSE(result);
+	TEST_ASSERT_TRUE(result->trueFalse);
 }
 void test_stringCompare_given_empty_string_expect_return_true(void){
 	char* dataName = " ";
 	char *name1 = " ";
-	int result = 2;
+	StrCompare* result;
 	result = stringCompare(dataName, name1);
-	TEST_ASSERT_TRUE(result);
+	TEST_ASSERT_TRUE(result->trueFalse);
 }
 void test_stringCompare_given_amoebe_expect_return_FALSE(void){
 	char* dataName = "amoebe";
 	char *name1 = "amoeba";
-	int result = 2;
+	StrCompare* result;
 	result = stringCompare(dataName, name1);
-	TEST_ASSERT_FALSE(result);
+	TEST_ASSERT_FALSE(result->trueFalse);
 }

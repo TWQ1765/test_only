@@ -43,6 +43,6 @@ struct StrCompare{
 };
 
 
-int stringCompare(char* testStr,char *inputStr);
+StrCompare* stringCompare(char* testStr,char *inputStr);
 
 #endif // _REVERSESTRING_H
