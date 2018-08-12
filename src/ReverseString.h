@@ -43,6 +43,15 @@ struct StrCompare{
 };
 
 
-StrCompare* stringCompare(char* testStr,char *inputStr);
-
+StrCompare* stringCompare(char* testStr,char *inputStr);//tested
+char* find1stNonSpace(char * name);
+int getWordLength(char* name);
+char* createWordTolower(char* name , int length);
+char* extractWork(char* name);
+char* toLower(char * line);
+void linkedListAddToHead(LinkedList* linkedList , ListItem* listItem);
+void listInit(LinkedList* list);
+void linkedListAddToTail(LinkedList * linkedList , ListItem* listItem);
+StrCompare* getNameFormDictionaryAndCompare(ListItem * item, char* inputData);//testing
+ListItem* searchItemFromDictionary(LinkedList * linkedList, char* inputData);//testing
 #endif // _REVERSESTRING_H
