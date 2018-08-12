@@ -1,51 +1,48 @@
 #ifndef _REVERSESTRING_H
 #define _REVERSESTRING_H
 
+#include	<stdio.h>
+#include	<stdarg.h>
+#include	<malloc.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<math.h>
+#include 	<ctype.h>
+#include 	<Exception.h>
+#include 	"Exception.h"
+#include 	"CException.h"
 
-typedef struct listItem listItem;
-struct listItem{
-		listItem * next;
-		void * data;
-};
-typedef struct linkedList linkedList;
-struct linkedList{
-		linkedList * head;
-		linkedList * tail;
-		int count;
-};
-int selfTryLinkedList();
+#define ADD_HEAD 0
+#define ADD_TAIL 1
 
-//linked list single
-//*
-typedef struct node node;
-struct node {
-   int data;
-   struct node *next;
-};
-void printList();
-void insert1(int data);
-int tryLinkedList1();
-
-void reverse_print(struct node *list);
-void insert2(int data);
-int tryLinkedList2();
-//*/
-
-/*//struct
-typedef struct Books Books;
-struct Books{
-	char  title[50];
-	char  author[50];
-	char  subject[100];
-	int   book_id;
+typedef struct ListItem ListItem;
+struct ListItem{
+	ListItem *next;
+	ListItem *pervious;
+	void *data;
 };
 
-int testStruct();
-int testStruct2();
-int testStruct3()
-void printBook2( struct Books book );
-void printBook3( struct Books *book );
-*/
+typedef struct LinkedList LinkedList;
+struct LinkedList{
+	ListItem *head;
+	ListItem *tail;
+	int count;
+};
 
+typedef struct Dictionary Dictionary;
+struct Dictionary{
+   char *name;
+   char *defination;
+};
+ 
+typedef struct StrCompare StrCompare;
+struct StrCompare{
+   int trueFalse;
+   int sensitivity;
+   char * nearIdaeData;
+};
+
+
+int stringCompare(char* testStr,char *inputStr);
 
 #endif // _REVERSESTRING_H
