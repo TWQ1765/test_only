@@ -7,6 +7,7 @@
  * 1.) void test_stringCompare_given_string_diffrent_length_expect_return_False(void) 
  * 2.) void test_getNameFormDictionaryAndCompare...
  * 3.) adding new function findHighest sensitivity work.
+ * 4.) test_stringCompare_given_string_diffrent_length_expect_return_TRUE
  */
 
 //can be improve by adding sensitivity
@@ -16,22 +17,18 @@ StrCompare* stringCompare(char* testStr,char *inputStr){
 	StrCompare dataStore;
 	dataStore.trueFalse=0;
 	dataStore.sensitivity=0;
-	dataStore.nearIdaeData=inputStr;
-	/*
-	int TrueFalse = dataStore.trueFalse;
-	int sensitivity = dataStore.sensitivity;
-	char* nearIdaeData = dataStore.nearIdaeData;
-	*/
+	dataStore.nearIdeaData=NULL;
+
 	StrCompare* dataStorePtr = &dataStore;
 	int tempTrueFalse = dataStorePtr->trueFalse;
-	char* tempTnearIdaeData = dataStorePtr->nearIdaeData;
+	//char* tempNearIdaeData = dataStorePtr->nearIdaeData;
+	//printf("tempNearIdaeData=%s\n",tempNearIdaeData);
 	
-	printf("tempTrueFalse=%s\n",tempTnearIdaeData);
-	
-	while( (testStr[i]!='\0') && (inputStr[i]!='\0')){
+	while((testStr[i]!='\0') || (inputStr[i]!='\0')){
 		if((testStr[i]) != (inputStr[i])){
 			dataStorePtr->trueFalse = 0;
-			dataStore.sensitivity = i;
+			dataStorePtr->sensitivity = i;
+			dataStore.nearIdeaData=testStr;
 			return dataStorePtr;
 		}else{
 			i++;
@@ -65,37 +62,48 @@ StrCompare* getNameFormDictionaryAndCompare(ListItem * item, char* inputData){
 ListItem* searchItemFromDictionary(LinkedList * linkedList, char* inputData){
 	char* error = inputData;
 	LinkedList* tempList = linkedList;
+	
 	if (linkedList->head == NULL){
 		throwError(1,"ERROR %d: '%s' is not found in the Dictionary.",1,(error));
 	}else{
 		ListItem* tempItem = tempList->head;
 		StrCompare* strCompare = getNameFormDictionaryAndCompare(tempItem,inputData);
+		char* myIdeaData = ((Dictionary*)(tempList->head->data))->name;//
+		int sensitivityPerv = (strCompare->sensitivity);//1st compare
 		while(((strCompare->trueFalse)!=1) && (tempItem!=(tempList->tail))){//check until tail
-			
-			int sensitivityPerv = (strCompare->sensitivity);
+		
+			printf("sensitivityPerv=%d\n",sensitivityPerv);//5
 			tempItem = tempItem->next;
 			strCompare = getNameFormDictionaryAndCompare(tempItem,inputData);
-			char* nearIdea = ((Dictionary*)(tempItem->data))->name;
-			if((strCompare->sensitivity) >= sensitivityPerv){
-				sensitivityPerv = (strCompare->sensitivity);
-				//strCompare->nearIdaeData = 
-			}else{
-				sensitivityPerv = sensitivityPerv;
-				
-			}
 			
+			//char* nearIdea = ((Dictionary*)(tempItem->data))->name;
+			
+			printf("strCompare=%d\n",strCompare->sensitivity);//0
+			
+			if((sensitivityPerv > (strCompare->sensitivity)) && (sensitivityPerv != (strCompare->sensitivity))){// is(5>0)? yes
+				sensitivityPerv = sensitivityPerv;
+				printf("sensitivityPerv2=%d\n",sensitivityPerv);
+				myIdeaData = myIdeaData;//strCompare->nearIdeaData;
+				
+				
+			}else{
+				sensitivityPerv = (strCompare->sensitivity); 
+				printf("sensitivityPerv3=%d\n",sensitivityPerv);//5
+				myIdeaData = strCompare->nearIdeaData;
+			}
 		}
 		//sensitivityPerv = get mostIdeaData;
 		strCompare = getNameFormDictionaryAndCompare(tempItem,inputData);//check tail
 		if((strCompare->trueFalse)!=1){
-			throwError(1,"ERROR %d: '%s' is not found in the Dictionary.",1,(error));
+			throwError(1,"ERROR %d: '%s' is not found in the Dictionary. Do you mean %s?",1,(error),myIdeaData);
 		}else{
 			return tempItem;
 		}
 	}
 }
 
-char* findNearIdeaData(StrCompare* strCompare,int sensitivity){
+char* findNearIdeaData(StrCompare* strCompare){
+	
 	
 }
 
@@ -144,7 +152,7 @@ char* extractWork(char* name){//no cahnge
 char* toLower(char * line){//no cahnge
 	char *strLower = (char *)malloc(strlen(line+1));
 	int i = 0;
-	while( line[i] != '\0'){
+	while( (line[i] != '\0')  && (line[i] != ' ')){//add more condition
 		strLower[i] =(tolower(line[i]));
 		i++;
 	}

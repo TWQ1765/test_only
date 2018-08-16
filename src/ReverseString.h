@@ -39,7 +39,7 @@ typedef struct StrCompare StrCompare;
 struct StrCompare{
    int trueFalse;
    int sensitivity;
-   char * nearIdaeData;
+   char * nearIdeaData;
 };
 
 
